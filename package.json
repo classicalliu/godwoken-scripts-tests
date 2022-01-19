@@ -1,0 +1,18 @@
+{
+  "name": "godwoken-scripts-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "fmt": "prettier --write \"src/*.ts\" \"src/**/*.ts\" package.json",
+    "lint": "eslint -c .eslintrc.js \"src/*.ts\" \"src/**/*.ts\""
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/parser": "^5.10.0",
+    "eslint": "^8.7.0",
+    "prettier": "^2.5.1",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.4"
+  }
+}
