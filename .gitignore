@@ -106,3 +106,5 @@ dist
 # IDE or environment specific files
 .idea
 .vscode
+
+.devnet.env

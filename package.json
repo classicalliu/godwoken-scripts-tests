@@ -4,15 +4,25 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start:devnet": "ENV_PATH=./.devnet.env ts-node ./src/index.ts",
     "fmt": "prettier --write \"src/*.ts\" \"src/**/*.ts\" package.json",
     "lint": "eslint -c .eslintrc.js \"src/*.ts\" \"src/**/*.ts\""
   },
   "devDependencies": {
+    "@types/node": "^17.0.10",
+    "@types/secp256k1": "^4.0.3",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "eslint": "^8.7.0",
     "prettier": "^2.5.1",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "@ckb-lumos/base": "0.18.0-rc1",
+    "ckb-js-toolkit": "^0.10.2",
+    "dotenv": "^14.2.0",
+    "keccak256": "^1.0.6",
+    "secp256k1": "^4.0.3"
   }
 }
