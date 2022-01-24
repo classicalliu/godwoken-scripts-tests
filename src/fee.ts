@@ -16,7 +16,8 @@ export async function run() {
   const rollupTypeHash = await web3Client.getRollupTypeHash();
   const ethAccountLockHash = await web3Client.getEthAccountLockHash();
 
-  const blockProducerId = "0x0";
+  const producerId = process.env.BLOCK_PRODUCER_ID || 0;
+  const blockProducerId = "0x" + BigInt(producerId).toString(16);
   const sudtId = "0x1";
   const feeAmount: bigint = BigInt(2333);
   const feeAmountHex: HexNumber = "0x" + feeAmount.toString(16);
