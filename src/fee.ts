@@ -1,4 +1,4 @@
-import { Hash, HexNumber, HexString } from "@ckb-lumos/base";
+import { Hash, HexNumber, HexString, Script, utils } from "@ckb-lumos/base";
 import { GodwokenClient } from "./base/client";
 import {
   privateKeyToEthAddress,
@@ -24,6 +24,15 @@ export async function run() {
 
   const targetEthAddress: HexString = generateEthAddress();
   console.log("target eth address:", targetEthAddress);
+
+  const toScript: Script = {
+    code_hash: ethAccountLockHash,
+    hash_type: "type",
+    args: rollupTypeHash + targetEthAddress.slice(2).toLowerCase(),
+  };
+  const toScriptHash: Hash = utils.computeScriptHash(toScript);
+  const toScriptHash160: HexString = toScriptHash.slice(0, 42);
+  console.log("to script hash 160:", toScriptHash160);
 
   const l2Transaction = await createEoaAccount(
     web3Client,
@@ -69,6 +78,9 @@ export async function run() {
   console.log("l2 tx hash:", l2TxHash);
 
   await waitForTx(web3Client, l2TxHash);
+
+  const toId = await web3Client.getAccountIdByScriptHash(toScriptHash);
+  console.log("created account id:", toId);
 
   const fromAccountBalanceAfterCreateHex: HexNumber =
     await web3Client.getBalance(fromAddress, sudtId);
