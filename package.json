@@ -6,6 +6,7 @@
   "scripts": {
     "start:devnet": "ENV_PATH=./.devnet.env ts-node ./src/index.ts",
     "start:alphanet": "ENV_PATH=./.alphanet.env ts-node ./src/index.ts",
+    "start:testnet": "ENV_PATH=./.testnet.env ts-node ./src/index.ts",
     "fmt": "prettier --write \"src/*.ts\" \"src/**/*.ts\" package.json",
     "lint": "eslint -c .eslintrc.js \"src/*.ts\" \"src/**/*.ts\""
   },
